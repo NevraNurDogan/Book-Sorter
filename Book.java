@@ -1,14 +1,11 @@
-import java.util.Arrays;
-public class Book implements Comparable<Book>{
+
+import java.util.Comparator;
+
+public class Book implements Comparable<Book> {
 private String name;
 private int numPages;
 private String writer;
 private String releaseDate;
-    @Override
-    public int compareTo(Book other) {
-        return this.name.compareTo(other.getName());
-    }
-
 
     public Book(String name, int numPages, String writer, String releaseDate) {
         this.name = name;
@@ -17,6 +14,14 @@ private String releaseDate;
         this.releaseDate = releaseDate;
     }
 
+    public int compareTo(Book other) {
+        return this.name.compareTo(other.name);
+    }
+    public static Comparator<Book> SayfaSayisiComparator = new Comparator<Book>() {
+        public int compare(Book kitap1, Book kitap2) {
+            return kitap1.getNumPages() - kitap2.getNumPages();
+        }
+    };
     public String getName() {
         return name;
     }
